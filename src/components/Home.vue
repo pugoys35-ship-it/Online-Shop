@@ -16,10 +16,10 @@ export default {
     <section class="relative">
         <div class="w-full h-screen  z-10 absolute flex flex-col justify-center px-20 gap-10 ">
             <div class="mt-40">
-                <h1 class="text-white text-6xl">Tursted by those who <br> need a good product</h1>
+                <h1 class="text-white text-6xl">Trusted by those who <br> need a good product</h1>
                 <button
                     class="px-5 py-2 bg-white w-fit rounded-full font-semibold hover:bg-black hover:text-white duration-500 delay-110 cursor-pointer hover:scale-103 mt-10">Explore
-                    product ></button>
+                    products <span class="px-2">➜</span></button>
             </div>
             <div class="">
                 <p class="text-[15px] text-gray-400 mb-20">Shopping online makes it easy to find exactly what you need
@@ -36,7 +36,7 @@ export default {
             </div>
         </div>
         <div class="relative">
-            <div class="w-full h-[849px] bg-black/60 absolute"></div>
+            <div class="w-full h-full bg-black/60 absolute"></div>
             <video src="../assets/background.mp4" autoplay muted loop class="w-full"></video>
         </div>
     </section>
