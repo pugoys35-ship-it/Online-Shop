@@ -3,12 +3,14 @@ import Navbar from './components/Navbar.vue'
 import Home from './components/Home.vue'
 import FeaturedProducts from './components/FeaturedProducts.vue'
 import Footer from './components/Footer.vue'
+import Products from './components/Products.vue';
 
 export default{
   components:{
     Navbar,
     Home,
     FeaturedProducts,
+    Products,
     Footer
   },
   data(){
@@ -27,6 +29,7 @@ export default{
 <template>
   <Navbar @goTo="navi" />
   <Home v-if="currentPage === 'Home'" />
-  <FeaturedProducts v-if="currentPage === 'Products'" />
+  <FeaturedProducts  />
+  <Products v-if="currentPage === 'Products'" />
   <Footer />
 </template>
