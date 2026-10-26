@@ -6,6 +6,7 @@ import Footer from './components/Footer.vue'
 import Products from './components/Products.vue';
 import CartItem from './components/CartItem.vue';
 import CheckOutForm from './components/CheckOutForm.vue';
+import ProductsDetailsModal from './components/ProductsDetailsModal.vue';
 
 
 export default{
@@ -15,6 +16,7 @@ export default{
     FeaturedProducts,
     Products,
     CartItem,
+    ProductsDetailsModal,
     Footer,
     CheckOutForm,
   },
@@ -24,7 +26,7 @@ export default{
 
         { id: 1, name: 'Sony A7 IV with 28mm-70mm', image: 'https://i.pinimg.com/1200x/25/d9/83/25d9833b64439bcab819618ce496862b.jpg', price: 750, description: '33MP full-frame Exmor R back-illuminated CMOS sensor 8x more powerful, next generation BIONZ XR image processing engine Up to 4K 60p 10-bit 4:2:2 w/ full pixel readout in all recording formats 7K oversampling full-frame 4K 30p 10-bit 4:2:2 w/ no pixel binning', category: 'Electronics', quantity:1 },
 
-        { id: 2, name: 'boAt Airdopes Supreme', image: 'https://i.pinimg.com/1200x/08/8d/d4/088dd4215f4d441ebdc79f0517996aa0.jpg', price: 539, description: 'boAt Airdopes Supreme Behance', category: 'Electronic', quantity: 1 },
+        { id: 2, name: 'boAt Airdopes Supreme', image: 'https://i.pinimg.com/1200x/08/8d/d4/088dd4215f4d441ebdc79f0517996aa0.jpg', price: 539, description: 'boAt Airdopes Supreme Behance', category: 'Electronics', quantity: 1 },
 
         { id: 3, name: 'Manfinity EZcore Men', image: 'https://i.pinimg.com/736x/61/8c/06/618c0641b0a01a22be7488d28603f9ea.jpg', price: 150, description: 'To find out about the Manfinity EZcore Men Flap Pocket Side Drawstring Waist Cargo Trousers at SHEIN, part of our latest Men Bottoms ready to shop online today!', category: 'Clothes', quantity: 1 },
 
@@ -36,7 +38,7 @@ export default{
 
         { id: 7, name: 'Sonos Roam — Photography', image: 'https://i.pinimg.com/736x/5b/81/86/5b8186a7416ba7381a906277d0a978df.jpg', price: 689, description: 'A collection of stills and motion work created for the ID Team at Sonos for the launch of their newly designed and released Roam speaker.', category: 'Electronics', quantity: 1 },
 
-        { id: 8, name: 'DualSense - PS5', image: 'https://i.pinimg.com/1200x/f2/47/eb/f247ebf102ea110e6a45ae89328176ee.jpg', price: 780, description: 'Photography,Advertising,CGI,Adobe Photoshop,Autodesk 3ds Max, Corona Renderer', category: 'Electonic', quantity: 1 },
+        { id: 8, name: 'DualSense - PS5', image: 'https://i.pinimg.com/1200x/f2/47/eb/f247ebf102ea110e6a45ae89328176ee.jpg', price: 780, description: 'Photography,Advertising,CGI,Adobe Photoshop,Autodesk 3ds Max, Corona Renderer', category: 'Electonics', quantity: 1 },
 
         { id: 9, name: 'Spring Solid Color Textured Long Sleeve', image: 'https://i.pinimg.com/1200x/6a/7f/75/6a7f759dd3eedb7ee6958f204b61596c.jpg', price: 120, description: 'In order to provide you with the best experience, all our products are made by master craftsmen with selected high-quality materials and everyone owns its unique positive meaning.', category: 'Clothes', quantity: 1 },
 
@@ -47,12 +49,13 @@ export default{
         { id: 12, name: 'Newsoles', image: 'https://i.pinimg.com/1200x/ce/32/02/ce320288c85bb8ae410da272410eb39f.jpg', price: 89, description: 'Crush your workouts in style. Functional activewear from Newsoles. Shop For T-Shirts, Shorts, Jackets, Vests, Sets and Trainers. View Our Activewear Collection Now!', category: 'Clothes' , quantity: 1},
       
       ],
+      productdetail: [],
 
       addToCart: [],
       currentPage: 'Home',
       Cartmodal: false,
       checkOut: false,
- 
+      detailsModal: false,
      
     }
   },
@@ -72,6 +75,15 @@ export default{
     cart(index){
       this.addToCart.push(this.products[index]);
 
+    },
+
+    todetails(detail){
+      this.productdetail.push(detail);
+      
+    },
+
+    modalDetails(modal){
+      this.detailsModal = modal;
     }
   }
 }
@@ -81,8 +93,9 @@ export default{
   <Navbar @goTo="navi" @showModalCart="cartModal" :page="currentPage" />
   <Home v-if="currentPage === 'Home'" />
   <FeaturedProducts  />
-  <Products v-if="currentPage === 'Products'" :toproducts="products" @toCart="cart" />
+  <Products v-if="currentPage === 'Products'" @details="todetails" @modalD="modalDetails" :toproducts="products" @toCart="cart" />
   <CartItem v-if="Cartmodal" @ShowCartModal="cartModal" @showCheckModal="checkOutModal" :toCartItem="addToCart" :subT="subtotal" />
+  <ProductsDetailsModal v-if="detailsModal" :mydetails="productdetail" @detailModal="modalDetails" @toCart="cart" />
   <Footer />
   <CheckOutForm v-if="checkOut" @closeCheckOut="checkOutModal" />
 </template>
