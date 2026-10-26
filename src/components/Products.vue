@@ -3,11 +3,13 @@ export default {
     props: ['toproducts'],
     data() {
         return {
-
+          
         }
     },
     methods: {
-
+        addtoCart(index){
+            this.$emit('toCart' , index);
+        }
     }
 }
 </script>
@@ -30,13 +32,13 @@ export default {
                     </div>
 
                     <div class="flex flex-col gap-1 mt-4 px-4">
-                        <span class="font-normal text-gray-600 dark:text-gray-300">{{ item.category }}</span>
+                        <span class="font-normal text-gray-600 dark:text-gray-300">{{ item.cateory }}</span>
                         <h2 class="text-md font-semibold text-gray-800 dark:text-gray-50">{{ item.name }}</h2>
                         <span class="font-semibold text-gray-800 dark:text-gray-50">${{ item.price }}</span>
                     </div>
 
                     <div class="mt-4 p-4 border-t flex justify-between border-gray-200 dark:border-gray-500">
-                        <button 
+                        <button @click="addtoCart(index)"
                             class="rounded-full font-semibold px-5 py-2 bg-white hover:bg-black hover:text-white hover:border hover:border-white duration-500 delay-110">Add
                             to cart</button>
                         <button
