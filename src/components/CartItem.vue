@@ -18,15 +18,18 @@ export default {
 
         removeCart(index){
             this.toCartItem[index].quantity = 1;
-            this.toCartItem.splice(index,1);
+            // this.toCartItem.splice(index,1);
+            this.$emit('minusan', index)
         },
 
         add(index){
+            this.$emit('multiply', index)
             this.toCartItem[index].quantity += 1;
-            this.addquan += 1;
+           
         },
 
         minus(index){
+            this.$emit('decreaseTotal', index)
             this.addquan -= 1;
             this.toCartItem[index].quantity -= 1;
         }
@@ -73,12 +76,12 @@ export default {
         </div>
         <div class="flex justify-between mb-2">
             <span>Subtotal</span>
-            <span>$</span>
+            <span>${{ subT }}</span>
         </div>
         <hr class="my-2">
         <div class="flex justify-between mb-2">
             <span class="font-semibold">Total</span>
-            <span class="font-semibold">$21.98</span>
+            <span class="font-semibold">${{ subT }}</span>
         </div>
         <button @click="showCheckOutModal(true)"
             class="bg-black text-white hover:border hover:bg-white hover:border-black hover:text-black cursor-pointer duration-400 delay-110 py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>

@@ -1,6 +1,6 @@
 <script>
 export default {
-    props:['page'],
+    props:['page', 'cart'],
     data() {
         return {
 
@@ -30,7 +30,7 @@ export default {
         </div>
         <div class="z-999">
             <button @click="showCartModal(true)"
-                class="px-5 py-2 bg-white rounded-xl text-black hover:bg-black hover:text-white duration-500 delay-110 hover:scale-103 cursor-pointer ">Cart</button>
+                class="px-5 py-2 bg-white rounded-xl text-black hover:bg-black hover:text-white duration-500 delay-110 hover:scale-103 cursor-pointer ">Cart <span v-if="cart.length > 0">{{ cart.length }}</span></button>
         </div>
     </nav>
 
@@ -43,7 +43,7 @@ export default {
         </div>
         <div class="z-999">
             <button @click="showCartModal(true)"
-                class="px-5 py-2 bg-black rounded-xl text-white hover:border hover:bg-white hover:border-blacks hover:text-black duration-500 delay-110 hover:scale-103 cursor-pointer ">Cart</button>
+                class="px-5 py-2 bg-black rounded-xl text-white hover:border hover:bg-white hover:border-blacks hover:text-black duration-500 delay-110 hover:scale-103 cursor-pointer ">Cart <span v-if="cart.length > 0">{{ cart.length }}</span></button>
         </div>
     </nav>
 
