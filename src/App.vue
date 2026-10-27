@@ -92,7 +92,7 @@ export default{
 <template>
   <Navbar @goTo="navi" @showModalCart="cartModal" :page="currentPage" />
   <Home v-if="currentPage === 'Home'" />
-  <FeaturedProducts  />
+  <FeaturedProducts v-if="currentPage === 'Home'" />
   <Products v-if="currentPage === 'Products'" @details="todetails" @modalD="modalDetails" :toproducts="products" @toCart="cart" />
   <CartItem v-if="Cartmodal" @ShowCartModal="cartModal" @showCheckModal="checkOutModal" :toCartItem="addToCart" :subT="subtotal" />
   <ProductsDetailsModal v-if="detailsModal" :mydetails="productdetail" @detailModal="modalDetails" @toCart="cart" />
