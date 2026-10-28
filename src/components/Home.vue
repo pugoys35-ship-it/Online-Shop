@@ -28,10 +28,10 @@ export default {
                     prices, read reviews, and discover new products in just a few clicks. The best part is having <br>
                     everything delivered right to your doorstep.</p>
                 <div class="">
-                    <div class="w-70 h-40 bg-white rounded-xl  relative">
+                    <!-- <div class="w-70 h-40 bg-white rounded-xl  relative">
                         <div class="w-full h-full absolute bg-black/20"></div>
                         <video src="../assets/mini.mp4" autoplay muted loop class="w-full rounded-xl"></video>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -1,4 +1,17 @@
 <script>
+export default{
+    data(){
+        return{
+
+        }
+    },
+    methods: {
+        changeandGo(c, p){
+            this.$emit('changeC', c);
+            this.$emit('toP', p);
+        }
+    }
+}
 </script>
 
 <template>
@@ -19,9 +32,8 @@
                             <br>
                             <br>
                         </p>
-                        <button 
-                            class="cursor-pointer inline-block bg-[#E1E1E1] font-semibold px-4 py-2 rounded-full">Learn
-                            More</button>
+                        <button @click="changeandGo('Electronics', 'Products')"
+                            class="cursor-pointer inline-block bg-[#E1E1E1] font-semibold px-4 py-2 rounded-full">Explore</button>
                     </div>
                 </div>
 
@@ -31,9 +43,8 @@
                         <h3 class="text-xl font-semibold text-purple-500 dark:text-white mb-2">Clothes</h3>
                         <p class="text-gray-700 dark:text-gray-300 mb-4 two-lines">Clothes help you express your
                             personal style while keeping you comfortable in different weather and situations.</p>
-                        <button 
-                            class="cursor-pointer inline-block bg-[#E1E1E1] font-semibold px-4 py-2 rounded-full">Learn
-                            More</button>
+                        <button  @click="changeandGo('Clothes', 'Products')"
+                            class="cursor-pointer inline-block bg-[#E1E1E1] font-semibold px-4 py-2 rounded-full">Explore</button>
                     </div>
                 </div>
 
@@ -43,9 +54,8 @@
                         <h3 class="text-xl font-semibold text-cyan-500 dark:text-white mb-2">Accessories</h3>
                         <p class="text-gray-700 dark:text-gray-300 mb-4 two-lines">Accessories add personality to any
                             outfit, helping you express your style with small but meaningful details.</p>
-                        <button 
-                            class="cursor-pointer inline-block bg-[#E1E1E1] font-semibold px-4 py-2 rounded-full">Learn
-                            More</button>
+                        <button  @click="changeandGo('Accessories', 'Products')"
+                            class="cursor-pointer inline-block bg-[#E1E1E1] font-semibold px-4 py-2 rounded-full">Explore</button>
                     </div>
                 </div>
 
