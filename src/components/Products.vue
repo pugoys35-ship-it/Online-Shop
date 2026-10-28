@@ -1,15 +1,16 @@
 <script>
 export default {
-    props: ['toproducts', 'toproductsClothes', 'toproductsAccessories'],
+    props: ['toproducts', 'toproductsClothes', 'toproductsAccessories', 'changetoC'],
     data() {
         return {
-            currentCategory: 'all',
+           
             search: '',
             
         }
     },
-    methods: {
+    methods: {  
         addtoCart(index) {
+            alert('Added to cart')
             this.$emit('toCart', index);
         },
 
@@ -19,11 +20,11 @@ export default {
         },
 
         changeCategory(i) {
-            this.currentCategory = i;
+            this.$emit('changeCP', i)
         },
 
         showAll(i){
-            this.currentCategory = i;
+            this.$emit('changeCP', i)
         }
     }
 }
@@ -45,7 +46,7 @@ export default {
                         class="bg-white px-5 py-2 rounded-full font-semibold cursor-pointer">Clothes</button>
                     <button @click="changeCategory('Accessories')"
                         class="bg-white px-5 py-2 rounded-full font-semibold cursor-pointer">Accessories</button>
-                    <button @click="showAll('all')" v-if="currentCategory === 'Electronics' || currentCategory === 'Clothes' || currentCategory === 'Accessories'" class="p-2 rounded-full bg-white cursor-pointer"><img
+                    <button @click="showAll('all')" v-if="changetoC === 'Electronics' || changetoC === 'Clothes' || changetoC === 'Accessories'" class="p-2 rounded-full bg-white cursor-pointer"><img
                             src="https://static.vecteezy.com/system/resources/previews/079/268/541/large_2x/black-x-symbol-isolated-on-white-background-minimalist-design-bold-typography-clean-lines-vector.jpg"
                             alt="" class="w-6 h-6 object-cover" ></button>
                 </div>
@@ -58,11 +59,11 @@ export default {
         </div>
 
         <!-- Electronics -->
-        <div v-if="currentCategory === 'Electronics' || currentCategory === 'all'">
+        <div v-if="changetoC === 'Electronics' || changetoC === 'all'">
             <div class="grid grid-cols-4  gap-5 mt-10">
 
                 <div v-for="item in toproducts" :key="item.id">
-                    <div class="max-w-sm w-full bg-black rounded-lg shadow-lg overflow-hidden ">
+                    <div v-if="search === item.name || search === ''" class="max-w-sm w-full bg-black rounded-lg shadow-lg overflow-hidden ">
                         <div>
                             <img class="object-cover h-54 w-full" :src="item.image" alt="Converse sneakers" />
                         </div>
@@ -87,11 +88,11 @@ export default {
 
 
         <!-- Clothes -->
-        <div v-if="currentCategory === 'Clothes' || currentCategory === 'all'">
+        <div v-if="changetoC === 'Clothes' || changetoC === 'all'">
             <div class="grid grid-cols-4 gap-5 mt-10">
 
                 <div v-for="item in toproductsClothes" :key="item.id">
-                    <div class="max-w-sm w-full bg-black rounded-lg shadow-lg overflow-hidden ">
+                    <div v-if="search === item.name || search === ''" class="max-w-sm w-full bg-black rounded-lg shadow-lg overflow-hidden ">
                         <div>
                             <img class="object-cover h-54 w-full" :src="item.image" alt="Converse sneakers" />
                         </div>
@@ -117,11 +118,11 @@ export default {
 
 
         <!-- Accessories -->
-        <div v-if="currentCategory === 'Accessories' || currentCategory === 'all'">
+        <div v-if="changetoC === 'Accessories' || changetoC === 'all'">
             <div class="grid grid-cols-4 gap-5 mt-10">
 
                 <div v-for="item in toproductsAccessories" :key="item.id">
-                    <div class="max-w-sm w-full bg-black rounded-lg shadow-lg overflow-hidden ">
+                    <div v-if="search === item.name || search === ''" class="max-w-sm w-full bg-black rounded-lg shadow-lg overflow-hidden ">
                         <div>
                             <img class="object-cover h-54 w-full" :src="item.image" alt="Converse sneakers" />
                         </div>
