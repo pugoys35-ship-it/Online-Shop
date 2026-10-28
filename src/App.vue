@@ -83,7 +83,11 @@ export default {
     cart(index) {
       this.addToCart.push(index);
       this.total += index.price
-
+      if(this.addToCart[index].quantity == 0){
+        this.addToCart[index].quantity += 1;
+      }else{
+        
+      }
     },
 
     todetails(detail) {
@@ -110,7 +114,13 @@ export default {
     },
 
     deTotal(i) {
-      this.total -= this.addToCart[i].price;
+      if(this.addToCart[i].quantity > 1){
+        this.addToCart[i].quantity -= 1
+        this.total -= this.addToCart[i].price;
+      }else if(this.addToCart[i].quantity == 1){
+        this.total -= this.addToCart[i].price;
+        this.addToCart.splice(i, 1);
+      }
     },
 
     showconfirmmodal(i) {
