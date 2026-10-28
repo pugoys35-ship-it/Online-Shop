@@ -77,21 +77,27 @@ export default {
     navi(i) {
       this.currentPage = i;
     },
+    toProduct(){
+      this.currentPage = 'Products'
+    },
 
     cartModal(modal) {
       this.Cartmodal = modal;
     },
 
     checkOutModal(modal) {
-      this.total = 0
       
-      if(this.name == ''){
+      
+      if(this.name == '' && this.total > 0){
       this.checkOut = modal;
-
-      }else{
+      }else if(this.total > 0){
       this.orderhistory.push(...this.addToCart);
       this.addToCart = [];
       this.confirmModal = true;
+      this.total = 0
+      }else{
+      this.confirmModal = false;
+      alert('please add first')
       }
     },
 
@@ -180,7 +186,7 @@ export default {
 
 <template>
   <Navbar @goTo="navi" @showModalCart="cartModal" :page="currentPage" :cart="addToCart" />
-  <Home v-if="currentPage === 'Home'" />
+  <Home v-if="currentPage === 'Home'" @goTo="toProduct" />
   <FeaturedProducts v-if="currentPage === 'Home'" @explore="exploreProducts" @changeC="changeCategory" @toP="navi" />
   <Products v-if="currentPage === 'Products'" @details="todetails" @modalD="modalDetails"
     :toproducts="productsElectronics" :toproductsClothes="productsClothes" :toproductsAccessories="productAccessories"
