@@ -24,14 +24,14 @@ export default {
 
         add(index){
             this.$emit('multiply', index)
-            this.toCartItem[index].quantity += 1;
+            
            
         },
 
         minus(index){
             this.$emit('decreaseTotal', index)
             this.addquan -= 1;
-            this.toCartItem[index].quantity -= 1;
+            
         }
     }
 }
