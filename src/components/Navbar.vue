@@ -26,7 +26,7 @@ export default {
             <img src="../assets/logo.png" alt="" class="h-30 w-30 object-cover">
             <p @click="navi('Home')" class="text-gray-400 font-semibold text-md cursor-pointer  ">Home</p>
             <p @click="navi('Products')" class="text-gray-400 font-semibold text-md cursor-pointer">Products</p>
-
+            <p @click="navi('OrderHistory')" class="text-gray-400 font-semibold text-md cursor-pointer">Order History</p>
         </div>
         <div class="z-999">
             <button @click="showCartModal(true)"
@@ -34,11 +34,12 @@ export default {
         </div>
     </nav>
 
-    <nav v-if="page === 'Products'" class="flex  justify-between px-15 items-center w-full z-999 ">
+    <nav v-if="page === 'Products' || page === 'OrderHistory'" class="flex  justify-between px-15 items-center w-full z-999 ">
         <div class="flex items-center gap-10">
             <img src="../assets/productLogo.png" alt="" class="h-30 w-30 object-cover">
             <p @click="navi('Home')" class="text-black font-semibold text-md cursor-pointer  ">Home</p>
             <p @click="navi('Products')" class="text-black font-semibold text-md cursor-pointer">Products</p>
+            <p @click="navi('OrderHistory')" class="text-black font-semibold text-md cursor-pointer">Order History</p>
 
         </div>
         <div class="z-999">

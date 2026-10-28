@@ -8,6 +8,7 @@ import CartItem from './components/CartItem.vue';
 import CheckOutForm from './components/CheckOutForm.vue';
 import ProductsDetailsModal from './components/ProductsDetailsModal.vue';
 import ConfirmationModal from './components/ConfirmationModal.vue';
+import OrderHistory from './components/OrderHistory.vue';
 
 
 export default {
@@ -17,6 +18,7 @@ export default {
     FeaturedProducts,
     Products,
     CartItem,
+    OrderHistory,
     ProductsDetailsModal,
     ConfirmationModal,
     Footer,
@@ -27,7 +29,7 @@ export default {
       productsElectronics: [
 
         { id: 1, name: 'Camera', image: 'https://i.pinimg.com/1200x/25/d9/83/25d9833b64439bcab819618ce496862b.jpg', price: 750, description: '33MP full-frame Exmor R back-illuminated CMOS sensor 8x more powerful, next generation BIONZ XR image processing engine Up to 4K 60p 10-bit 4:2:2 w/ full pixel readout in all recording formats 7K oversampling full-frame 4K 30p 10-bit 4:2:2 w/ no pixel binning', category: 'Electronics', quantity: 1 },
-        { id: 2, name: 'Airpods', image: 'https://i.pinimg.com/1200x/08/8d/d4/088dd4215f4d441ebdc79f0517996aa0.jpg', price: 539, description: 'boAt Airdopes Supreme Behance', category: 'Electronics', quantity: 1 },
+        { id: 2, name: 'Airpods', image: 'https://i.pinimg.com/1200x/08/8d/d4/088dd4215f4d441ebdc79f0517996aa0.jpg', price: 539, description: 'AirPods are compact, Bluetooth-enabled earbuds created by Apple. They are known for easy pairing, lightweight design, and tight integration with the Apple ecosystem. They come with a small charging case that stores and recharges the earbuds when not in use', category: 'Electronics', quantity: 1 },
         { id: 7, name: 'Speakers', image: 'https://i.pinimg.com/736x/5b/81/86/5b8186a7416ba7381a906277d0a978df.jpg', price: 689, description: 'A collection of stills and motion work created for the ID Team at Sonos for the launch of their newly designed and released Roam speaker.', category: 'Electronics', quantity: 1 },
         { id: 8, name: 'Controller', image: 'https://i.pinimg.com/1200x/f2/47/eb/f247ebf102ea110e6a45ae89328176ee.jpg', price: 780, description: 'Photography,Advertising,CGI,Adobe Photoshop,Autodesk 3ds Max, Corona Renderer', category: 'Electonics', quantity: 1 },
       ],
@@ -56,7 +58,7 @@ export default {
 
 
       productdetail: [],
-
+      orderhistory: [],
       addToCart: [],
       currentPage: 'Home',
       Cartmodal: false,
@@ -64,7 +66,11 @@ export default {
       detailsModal: false,
       total: 0,
       confirmModal: false,
-      category: 'all'
+      category: 'all',
+      name: '',
+      gmail: '',
+      addST: '',
+      addBT: '',
     }
   },
   methods: {
@@ -77,16 +83,17 @@ export default {
     },
 
     checkOutModal(modal) {
+
       this.checkOut = modal;
     },
 
     cart(index) {
       this.addToCart.push(index);
       this.total += index.price
-      if(this.addToCart[index].quantity == 0){
+      if (this.addToCart[index].quantity == 0) {
         this.addToCart[index].quantity += 1;
-      }else{
-        
+      } else {
+
       }
     },
 
@@ -106,6 +113,7 @@ export default {
 
     multiplyTotal(i) {
       this.total += this.addToCart[i].price;
+      this.addToCart[i].quantity += 1;
     },
 
     closeCheckOutModal(i) {
@@ -114,16 +122,18 @@ export default {
     },
 
     deTotal(i) {
-      if(this.addToCart[i].quantity > 1){
+      if (this.addToCart[i].quantity > 1) {
         this.addToCart[i].quantity -= 1
         this.total -= this.addToCart[i].price;
-      }else if(this.addToCart[i].quantity == 1){
+      } else if (this.addToCart[i].quantity == 1) {
         this.total -= this.addToCart[i].price;
         this.addToCart.splice(i, 1);
       }
     },
 
     showconfirmmodal(i) {
+      this.orderhistory.push(...this.addToCart);
+      this.addToCart = [];
       this.confirmModal = i;
     },
 
@@ -137,6 +147,23 @@ export default {
 
     changeCategory(c) {
       this.category = c;
+    },
+
+    fname(i) {
+      this.name = i;
+    },
+    fgmail(i) {
+      this.gmail = i;
+    },
+    faddS(i) {
+      this.addST = i;
+    },
+    faddB(i) {
+      this.addBT = i;
+    },
+
+    cartModalI(i){
+      this.Cartmodal = i;
     }
 
   }
@@ -152,9 +179,13 @@ export default {
     @toCart="cart" :changetoC="category" @changeCP="changeCategory" />
   <CartItem v-if="Cartmodal" @ShowCartModal="cartModal" @showCheckModal="checkOutModal" :toCartItem="addToCart"
     @decreaseTotal="deTotal" :subT="total" @minusan="minus" @multiply="multiplyTotal" />
+  <OrderHistory v-if="currentPage === 'OrderHistory'" :toOrderHistory="orderhistory" :subT="total" :toName="name"
+    :toGmail="gmail" :toAddST="addST" :toAddBT="addBT" />
   <ProductsDetailsModal :mydetails="productdetail" @detailModal="modalDetails" @toCart="cart" />
   <ConfirmationModal v-if="confirmModal" @toconfirm="showconfirmmodal" />
   <Footer />
   <CheckOutForm v-if="checkOut" @closeCheckOut="checkOutModal" @closeCheckModal="closeCheckOutModal"
-    @toconfirm="showconfirmmodal" @closeModal="closeCheckOut" />
+    @toconfirm="showconfirmmodal" @closeModal="closeCheckOut" @name="fname" @gmail="fgmail" @addS="faddS"
+    @addB="faddB" @ShowCartModal="cartModalI" />
+
 </template>
