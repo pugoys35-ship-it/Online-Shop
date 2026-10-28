@@ -83,8 +83,16 @@ export default {
     },
 
     checkOutModal(modal) {
-
+      this.total = 0
+      
+      if(this.name == ''){
       this.checkOut = modal;
+
+      }else{
+      this.orderhistory.push(...this.addToCart);
+      this.addToCart = [];
+      this.confirmModal = true;
+      }
     },
 
     cart(index) {
