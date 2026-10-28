@@ -6,7 +6,9 @@ export default {
         }
     },
     methods: {
-
+        navi(index){
+            this.$emit('goTo', index)
+        }
     },
 }
 </script>
@@ -17,7 +19,7 @@ export default {
         <div class="w-full h-screen  z-10 absolute flex flex-col justify-center px-20 gap-10 ">
             <div class="mt-40">
                 <h1 class="text-white text-6xl">Trusted by those who <br> need a good product</h1>
-                <button
+                <button @click="navi('Products')"
                     class="px-5 py-2 bg-white w-fit rounded-full font-semibold hover:bg-black hover:text-white duration-500 delay-110 cursor-pointer hover:scale-103 mt-10">Explore
                     products <span class="px-2">➜</span></button>
             </div>
