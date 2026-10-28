@@ -21,10 +21,21 @@ export default {
 
         changeCategory(i) {
             this.$emit('changeCP', i)
+           
         },
 
         showAll(i){
             this.$emit('changeCP', i)
+        },
+        fromHightoLow(){
+            this.toproductsClothes.sort((a, b) => b.price - a.price)
+            this.toproductsAccessories.sort((a, b) => b.price - a.price)
+            this.toproducts.sort((a, b) => b.price - a.price)
+        },
+        fromLowtoHigh(){
+            this.toproductsClothes.sort((a, b) => a.price - b.price)
+            this.toproductsAccessories.sort((a, b) => a.price - b.price)
+            this.toproducts.sort((a, b) => a.price - b.price)
         }
     }
 }
@@ -50,11 +61,18 @@ export default {
                             src="https://static.vecteezy.com/system/resources/previews/079/268/541/large_2x/black-x-symbol-isolated-on-white-background-minimalist-design-bold-typography-clean-lines-vector.jpg"
                             alt="" class="w-6 h-6 object-cover" ></button>
                 </div>
-                <select name="" id=""
+
+                <!-- <select name="" id=""
                     class="w-60 outline-none cursor-pointer bg-white px-5 py-2 rounded-xl font-semibold fucos:border-white">
-                    <option value="">Highest to Lowest Price</option>
-                    <option value="">Lowest to Highest Price</option>
-                </select>
+                    <option @click="fromHightoLow" value="">Highest to Lowest Price</option>
+                    <option @click="fromLowtoHigh" value="">Lowest to Highest Price</option>
+                </select> -->
+                <div class="space-x-5">
+                    <button @click="fromHightoLow"
+                        class="bg-white px-5 py-2 rounded-full font-semibold cursor-pointer">Highest Price</button>
+                        <button @click="fromLowtoHigh"
+                        class="bg-white px-5 py-2 rounded-full font-semibold cursor-pointer">Lowest Price</button>
+                </div>
             </div>
         </div>
 
