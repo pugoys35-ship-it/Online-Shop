@@ -3,7 +3,10 @@ export default {
 
     data() {
         return {
-
+            userName: '',
+            gmail: '',
+            shippingAdd: '',
+            billAdd: '',
         }
     },
     methods: {
@@ -12,8 +15,13 @@ export default {
         },
 
         checkoutmodal(i){
-            this.$emit('toconfirm', true)
-            this.$emit('closeCheckModal', i)
+            this.$emit('toconfirm', true);
+            this.$emit('ShowCartModal', false)
+            this.$emit('name', this.userName);
+            this.$emit('gmail', this.gmail);
+            this.$emit('addS', this.shippingAdd);
+            this.$emit('addB', this.billAdd);
+            this.$emit('closeCheckModal', i);
         },
 
         closemodal(i){
@@ -35,52 +43,46 @@ export default {
                             <label class="block text-gray-800 font-bold mb-2" for="name">
                                 Name
                             </label>
-                            <input
+                            <input v-model="userName"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="name" type="text" placeholder="John Doe">
+                                 type="text" placeholder="Enter Name">
                         </div>
                         <div class="mb-6">
                             <label class="block text-gray-800 font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input
+                            <input v-model="gmail"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="email" type="email" placeholder="johndoe@example.com">
+                                 type="text" placeholder="sample@example.com">
                         </div>
+                        
+
                         <div class="mb-6">
-                            <label class="block text-gray-800 font-bold mb-2" for="card_number">
-                                Card Number
+                            <label class="block text-gray-800 font-bold mb-2" for="cvv">
+                                Shipping Address
                             </label>
-                            <input
+                            <input v-model="shippingAdd"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="card_number" type="text" placeholder="**** **** **** 1234">
-                        </div>
-                        <div class="mb-6">
-                            <label class="block text-gray-800 font-bold mb-2" for="expiration_date">
-                                Delivery address
-                            </label>
-                            <input
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="expiration_date" type="text" placeholder="MM / YY">
+                                 type="text" placeholder="Enter Address">
                         </div>
                         <div class="mb-6">
                             <label class="block text-gray-800 font-bold mb-2" for="cvv">
-                                CVV
+                                Billing Address
                             </label>
-                            <input
+                            <input v-model="billAdd"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="cvv" type="text" placeholder="***">
+                                 type="text" placeholder="Enter Address">
                         </div>
                         <div class="space-x-5">
 
                             <button @click="checkoutmodal(false)"
                                 class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="button">
+                               >
                                 Confirm
                             </button>
                             <button @click="closemodal(false)"
                                 class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="button">
+                                >
                                 Cancel
                             </button>
                         </div>

@@ -13,7 +13,8 @@ export default {
         },
 
         showCheckOutModal(modal) {
-            this.$emit('showCheckModal', modal)
+            this.$emit('quantohistory', this.addquan)
+            this.$emit('showCheckModal', modal);
         },
 
         removeCart(index){
@@ -53,7 +54,7 @@ export default {
                         <div class="border border-black rounded-lg w-fit">
                             <img :src="item.image" alt="" class="w-20 h-20 rounded-lg">
                         </div>
-                        <div>
+                        <div>   
                             <p class="text-[14px] font-semibold text-gray-500">{{ item.category }}</p>
                             <p class="text-[14px] font-semibold">{{ item.name }}</p>
                             <p class="text-[14px] font-semibold">Quantity: {{ item.quantity }}</p>
