@@ -28,14 +28,14 @@ export default {
             this.$emit('changeCP', i)
         },
         fromHightoLow() {
-            this.toproductsClothes.sort((a, b) => b.price - a.price)
-            this.toproductsAccessories.sort((a, b) => b.price - a.price)
-            this.toproducts.sort((a, b) => b.price - a.price)
+            this.toproductsClothes.sort(function(a, b) { return b.price - a.price})
+            this.toproductsAccessories.sort(function(a, b) { return b.price - a.price})
+            this.toproducts.sort(function(a, b) { return b.price - a.price})
         },
         fromLowtoHigh() {
-            this.toproductsClothes.sort((a, b) => a.price - b.price)
-            this.toproductsAccessories.sort((a, b) => a.price - b.price)
-            this.toproducts.sort((a, b) => a.price - b.price)
+            this.toproductsClothes.sort(function(a, b) { return a.price - b.price})
+            this.toproductsAccessories.sort(function(a, b) { return a.price - b.price})
+            this.toproducts.sort(function(a, b) { return a.price - b.price})
         }
     }
 }
