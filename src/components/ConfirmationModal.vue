@@ -12,7 +12,7 @@ export default {
     mounted(){
         setTimeout(() => {
             this.$emit('toconfirm', false)
-        }, 4000)
+        }, 1500)
     }
 }
 </script>
