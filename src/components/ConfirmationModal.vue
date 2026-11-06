@@ -1,8 +1,9 @@
 <script>
+import Img from '../assets/check.gif'
 export default {
     data() {
         return {
-
+            Img
         }
     },
     methods: {
@@ -23,7 +24,7 @@ export default {
 
             <div class="text-center">
                 <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-100">
-                  <img src="../assets/check.gif" alt="" class="object-cover ">
+                  <img :src="Img" alt="" class="object-cover ">
                 </div>
 
                 <h2 class="text-xl font-bold text-gray-900">Thank You</h2>
