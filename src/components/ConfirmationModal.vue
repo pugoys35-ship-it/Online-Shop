@@ -23,7 +23,7 @@ export default {
 
             <div class="text-center">
                 <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-100">
-                  <img src="../assets/Check.gif" alt="" class="object-cover ">
+                  <img src="../assets/images/Check.gif" alt="check" class="object-cover ">
                 </div>
 
                 <h2 class="text-xl font-bold text-gray-900">Thank You</h2>
