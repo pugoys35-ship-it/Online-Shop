@@ -1,5 +1,4 @@
 <script>
-import Img from '../assets/gopro.mp4'
 export default{
     data(){
         return{
@@ -25,7 +24,7 @@ export default{
 
             <div class="grid grid-cols-3 gap-8">
                 <div class="bg-white dark:bg-black shadow-lg rounded-lg overflow-hidden">
-                    <video :src="Img" autoplay muted loop class="w-full h-64 object-cover"></video>
+                    <video src="../assets/gopro.mp4" autoplay muted loop class="w-full h-64 object-cover"></video>
                     <div class="p-4 md:p-6 border-t border-[#1B1B1B]">
                         <h3 class="text-xl font-semibold text-indigo-500 dark:text-white mb-2">Electronics</h3>
                         <p class="text-gray-700 dark:text-gray-300 mb-4 two-lines">
