@@ -10,9 +10,9 @@ export default {
         }
     },
     methods: {
-        closeCheckOut(closemodal) {
-            this.$emit('closeCheckOut', closemodal)
-        },
+            // closeCheckOut(closemodal) {
+            //     this.$emit('closeCheckOut', closemodal)
+            // },
 
         checkoutmodal(i){
             this.$emit('toconfirm', true);
@@ -25,7 +25,7 @@ export default {
         },
 
         closemodal(i){
-            this.$emit('closeModal', false)
+            this.$emit('closeModal', i)
         }
     }
 }

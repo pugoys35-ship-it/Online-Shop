@@ -1,5 +1,5 @@
 <script>
-import Img from '../assets/gopro.mp4'
+import Img from '@/assets/gopro.mp4'
 export default{
     data(){
         return{
